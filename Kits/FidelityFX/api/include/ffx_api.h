@@ -26,8 +26,9 @@
 extern "C" {
 #endif  // #if defined(__cplusplus)
 
-//For Non-MSVC Compilers
-#ifndef DLLEXPORT
+#ifdef _MSC_VER
+#define DLLEXPORT __declspec(dllexport)
+#else	//If Use Non MSVC Environment.
 #define DLLEXPORT __attribute__((visibility("default")))
 #endif
 #define FFX_API_ENTRY DLLEXPORT
